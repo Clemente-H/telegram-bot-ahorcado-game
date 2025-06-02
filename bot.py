@@ -202,8 +202,14 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     """Función principal"""
-    # Reemplaza 'TU_TOKEN_AQUI' con el token de tu bot
-    TOKEN = "7503321150:AAG93t9ivL9G1SkcELnOEKTvn3XQJPSXynU"
+    import os
+    # Obtener token desde variable de ambiente
+    TOKEN = os.getenv('TELEGRAM_TOKEN')
+    
+    if not TOKEN:
+        print("Error: No se encontró la variable TELEGRAM_TOKEN")
+        print("Asegúrate de configurarla en Render o en tu .env")
+        return
     
     # Crear la aplicación
     application = Application.builder().token(TOKEN).build()
