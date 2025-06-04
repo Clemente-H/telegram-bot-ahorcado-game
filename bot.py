@@ -203,9 +203,12 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     """Función principal"""
     import os
+    from dotenv import load_dotenv
+    load_dotenv()
     # Obtener token desde variable de ambiente
     TOKEN = os.getenv('TELEGRAM_TOKEN')
-    
+
+
     if not TOKEN:
         print("Error: No se encontró la variable TELEGRAM_TOKEN")
         print("Asegúrate de configurarla en Render o en tu .env")
